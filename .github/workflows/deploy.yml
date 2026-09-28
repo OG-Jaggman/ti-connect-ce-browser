@@ -29,6 +29,14 @@ jobs:
     - name: Run generate.py
       run: python generate.py
 
+    - name: Upload downloadable project
+      uses: actions/upload-artifact@v4
+      with:
+        name: ti-connect-ce-browser-project
+        path: ./www
+        if-no-files-found: error
+        retention-days: 30
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
